@@ -16,6 +16,7 @@
 package com.google.android.ground
 
 import android.content.SharedPreferences
+import app.cash.turbine.test
 import com.google.android.ground.persistence.local.room.LocalDataStoreException
 import com.google.android.ground.repository.TermsOfServiceRepository
 import com.google.android.ground.repository.UserRepository
@@ -32,13 +33,11 @@ import com.sharedtest.system.auth.FakeAuthenticationManager
 import dagger.hilt.android.testing.HiltAndroidTest
 import javax.inject.Inject
 import kotlin.test.assertFailsWith
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @HiltAndroidTest
 @RunWith(RobolectricTestRunner::class)
 class MainViewModelTest : BaseHiltTest() {
@@ -152,15 +151,14 @@ class MainViewModelTest : BaseHiltTest() {
         )
       )
 
-    testNavigateTo(
-      navigator.getNavigateRequests(),
-      SignInFragmentDirections.showPermissionDeniedDialogFragment(),
-    ) {
-      fakeAuthenticationManager.signIn()
-    }
+    testNoNavigation(navigator.getNavigateRequests()) { fakeAuthenticationManager.signIn() }
 
     verifyProgressDialogVisible(false)
     assertThat(tosRepository.isTermsOfServiceAccepted).isFalse()
+
+    viewModel.uiState.test {
+      assertThat(expectMostRecentItem()).isEqualTo(MainUiState.onPermissionDenied)
+    }
   }
 
   @Test

@@ -99,11 +99,9 @@
   <string name="offline_map_imagery_download_progress_dialog_message">Downloading offline map imagery…</string>
   <string name="multiple_regions">Multiple regions</string>
   <string name="permission_denied">Permission denied</string>
-  <string name="contact_survey_organizer_to_obtain_access">Contact your system administrator to request access</string>
   <string name="close_app">Close app</string>
   <string name="cancel">Cancel</string>
   <string name="save">Save</string>
-  <string name="warning_sign_out">Warning: If you sign out, all unsaved data will be lost</string>
   <string name="no_imagery_available_for_area">No imagery for this area. Select an area with imagery to download to your device.</string>
   <string name="selected_offline_area_size">The selected area may take up to %s\u00A0MB of space on your device</string>
   <string name="selected_offline_area_too_large">Zoom in and select a smaller area to download to your device</string>
@@ -127,7 +125,6 @@
   <string name="previous">Previous</string>
   <string name="network_error_when_signing_in">Connect to the internet to sign in</string>
   <string name="camera_permissions_needed">You need to grant this application camera permissions to submit photos.</string>
-  <string name="error_message">Something went wrong</string>
   <string name="incomplete_area">Incomplete area</string>
   <string name="initializing">Initializing…</string>
   <string name="draw_area_task_instruction">Move the map and tap “Add point” to add points around the desired area.</string>
@@ -155,4 +152,15 @@
   <string name="about">About</string>
   <string name="terms_of_service">Terms of service</string>
   <string name="about_ground">Ground is an open-source community project built by Google and FAO under the Forest Data Partnership with help from SIG, Ecam, and open-source community contributors. \n\nIt is licensed under the <annotation type="apache_license">Apache License, Version 2.0</annotation>. \n\nView other <annotation type="all_licenses">Licenses</annotation></string>
+  <string name="failed">Failed</string>
+  <string name="synced">Synced</string>
+  <string name="syncing">Syncing</string>
+  <string name="upload_pending">Upload pending</string>
+  <string name="data_synced_media_pending">Data synced\n(media pending)</string>
+  <string name="data_synced_media_pending_retry">Data synced\n(media pending retry)</string>
+  <string name="media_syncing">Media syncing</string>
+  <string name="history">History</string>
+  <string name="signout_warning">If you sign out, all unsaved data will be lost.</string>
+  <string name="admin_request_access">To continue, contact your system administrator to request access.</string>
+  <string name="signup_request_access">To continue, <annotation type="sign_up_link">sign up to request access</annotation>.</string>
 </resources>

@@ -11,56 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-name: End to End Test
+name: Submission Test
 
 on:
   issue_comment:
     types: [created]
 
 jobs:
-  e2eTest:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/e2eTest')
-    steps:
-      - name: Start test
-        run: |
-          echo "Begin end to end test"
-
-
-  createTest:
-    needs: e2eTest
-    name: Create a new survey
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Run create-test
-        uses: google/ground-platform/.github/actions/create-test@master
-        with:
-            upload-artifacts: true
-
   submitTest:
-    needs: createTest
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/submitTest')
     name: Submit to survey
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Run submit-test
         uses: ./.github/actions/submit-test
         with:
           android-repository: ${{ github.repository }}
           google-maps-key: ${{ secrets.GOOGLE_MAPS_KEY }}
-          use-repo-data: false
-          upload-artifacts: true
-          
-
-  verifyTest:
-    needs: submitTest
-    name: Verify survey submissions
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Run verify-test
-        uses: google/ground-platform/.github/actions/verify-test@master
-        with:
-            use-repo-data: false
+          use-repo-data: true
+          upload-artifacts: false
