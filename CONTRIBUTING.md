@@ -4,6 +4,8 @@ This document covers everything you need to know about contributing to Ground
 for Android. Before you get started, please make sure you read all of the 
 sections and are able to sign our CLA.
 
+Some test change
+
 ## Contributor License Agreement (CLA)
 
 Contributions to this project must be accompanied by a Contributor License
